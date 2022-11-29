@@ -1,19 +1,19 @@
-import styles from './tasks.module.css'
+import styles from './task.module.css'
+import {TbTrash} from 'react-icons/tb'
 
 export function Task(){
     return(
-        <section>
-            <header>
-                <div>
-                    <p>Tarefas Criadas</p>
-                    <span>10</span>
-                </div>
+        <div className={styles.task}>
+            <button className={styles.checkContainer}>
+                <div/>
+            </button>
+            <p>
+                apspapsapsaksks
+            </p>
 
-                <div>
-                    <p>Concluídas</p>
-                    <span>2 de 10</span>
-                </div>
-            </header>
-        </section>
+            <button className={styles.deleteButton}>
+                <TbTrash size={20}/>
+            </button>
+        </div>
     )
 }
