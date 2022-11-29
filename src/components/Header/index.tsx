@@ -3,6 +3,10 @@ import styles from "./header.module.css";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { ChangeEvent, FormEvent, useState } from "react";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+import { useForm } from "react-hook-form";
+
 interface Props {
   onAddTask: (taskTitle: string) => void;
 }
@@ -30,14 +34,21 @@ export function Header({ onAddTask }: Props) {
           onChange={onChangeTitle}
           value={title}
           type="text"
-          name=""
           id=""
           placeholder="Adicione uma nova tarefa"
+          required
         />
-        <button>
-          Criar
-          <AiOutlinePlusCircle size={20} />
-        </button>
+        {title ? (
+          <button className={styles.active}>
+            Criar
+            <AiOutlinePlusCircle size={20} />
+          </button>
+        ) : (
+          <button className={styles.inative}>
+            Criar
+            <AiOutlinePlusCircle size={20} />
+          </button>
+        )}
       </form>
     </header>
   );
