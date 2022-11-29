@@ -38,10 +38,23 @@ export function App() {
     setTasks(newTasks);
   }
 
+  function CompletedTaskById(taskId: string) {
+    const newTask = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      }
+      return task;
+    });
+    setTasks(newTask);
+  }
+
   return (
     <>
       <Header onAddTask={addTask} />
-      <Tasks tasks={tasks} onDelete={deleteTaskById}/>
+      <Tasks tasks={tasks} onDelete={deleteTaskById} onComplete={CompletedTaskById} />
     </>
   );
 }
